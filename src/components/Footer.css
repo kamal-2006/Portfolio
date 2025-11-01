@@ -1,0 +1,133 @@
+.footer {
+  background: var(--footer-bg);
+  padding: 80px 0 0;
+  border-top: 1px solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-top-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: var(--footer-shape-bg);
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 50% 100%, 0 20%);
+  opacity: 0.5;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-main {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.footer-logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.footer-tagline {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-social-link {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.footer-quote {
+  text-align: right;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 300px;
+}
+
+.footer-quote span {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.footer-bottom {
+  padding: 25px 0;
+  border-top: 1px solid var(--card-border);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-copyright {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.heart-icon {
+  color: #ff4757;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.15); }
+  20%, 40% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footer-quote {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
+}
