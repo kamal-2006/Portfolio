@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaStar, FaCodeBranch, FaCircle } from 'react-icons/fa';
 import './Projects.css';
 
 const Projects = () => {
@@ -12,8 +12,9 @@ const Projects = () => {
       date: 'Feb - Mar 2025',
       github: 'https://github.com/kamaleshk23/chat-app',
       demo: 'https://chat-app-demo.com',
-      image: '/images/projects/chat-app.png',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      stars: 12,
+      forks: 3,
+      language: 'JavaScript'
     },
     {
       title: 'Hospital Management System',
@@ -22,8 +23,9 @@ const Projects = () => {
       date: 'July 2025',
       github: 'https://github.com/kamaleshk23/hospital-management',
       demo: 'https://hospital-management-demo.com',
-      image: '/images/projects/hospital-management.png',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+      stars: 8,
+      forks: 2,
+      language: 'JavaScript'
     },
     {
       title: 'Portfolio Website',
@@ -32,109 +34,94 @@ const Projects = () => {
       date: 'Nov 2025',
       github: 'https://github.com/kamaleshk23/portfolio',
       demo: 'https://kamaleshk.dev',
-      image: '/images/projects/portfolio.png',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+      stars: 15,
+      forks: 5,
+      language: 'JavaScript'
     }
   ];
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
-    }
+  const languageColors = {
+    JavaScript: '#f1e05a',
+    Python: '#3572A5',
+    Java: '#b07219',
+    TypeScript: '#2b7489',
+    HTML: '#e34c26',
+    CSS: '#563d7c'
   };
 
   return (
-    <section className="projects section" id="projects">
-      <div className="container">
-        <motion.h2 
-          className="section-title"
-          initial="hidden"
-          whileInView="visible"
+    <section className="projects gh-section" id="projects">
+      <div className="gh-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={fadeInUp}
+          transition={{ duration: 0.5 }}
         >
-          Featured Projects
-        </motion.h2>
+          <h2 className="gh-heading" style={{ fontSize: '24px', marginBottom: '16px' }}>
+            Featured Projects
+          </h2>
+          <p className="gh-text-muted" style={{ marginBottom: '24px', fontSize: '14px' }}>
+            Some of my recent work and side projects
+          </p>
+        </motion.div>
 
         <div className="projects-grid">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="project-card glass"
-              initial="hidden"
-              whileInView="visible"
+              className="project-repo-card gh-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              variants={fadeInUp}
-              transition={{ delay: index * 0.2 }}
+              transition={{ delay: index * 0.1 }}
             >
-              <div className="project-image-container">
-                <div 
-                  className="project-image-fallback"
-                  style={{ background: project.gradient }}
-                >
-                  <div className="fallback-content">
-                    <h4>{project.title}</h4>
-                    <p>Add screenshot to: /public/images/projects/</p>
-                  </div>
+              <div className="repo-header">
+                <div className="repo-title-section">
+                  <FaGithub className="repo-icon" />
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="repo-title gh-link">
+                    {project.title}
+                  </a>
                 </div>
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="project-image"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.previousSibling.style.display = 'flex';
-                  }}
-                  onLoad={(e) => {
-                    e.target.style.display = 'block';
-                    if (e.target.previousSibling) {
-                      e.target.previousSibling.style.display = 'none';
-                    }
-                  }}
-                />
-                <div 
-                  className="project-overlay"
-                  style={{ background: project.gradient }}
-                >
-                  <div className="project-links">
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="project-link"
-                    >
-                      <FaGithub /> View Code
-                    </a>
-                    <a 
-                      href={project.demo} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="project-link"
-                    >
+                <span className="repo-visibility gh-badge">Public</span>
+              </div>
+
+              <p className="repo-description">{project.description}</p>
+
+              <div className="repo-topics">
+                {project.tech.map((tech, techIndex) => (
+                  <span key={techIndex} className="topic-tag gh-badge">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="repo-footer">
+                <div className="repo-stats">
+                  <span className="repo-language">
+                    <FaCircle style={{ color: languageColors[project.language] || '#586069' }} />
+                    {project.language}
+                  </span>
+                  <a href={project.github} className="repo-stat gh-link">
+                    <FaStar />
+                    {project.stars}
+                  </a>
+                  <a href={project.github} className="repo-stat gh-link">
+                    <FaCodeBranch />
+                    {project.forks}
+                  </a>
+                </div>
+                <div className="repo-actions">
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="gh-btn">
                       <FaExternalLinkAlt /> Live Demo
                     </a>
-                  </div>
+                  )}
                 </div>
               </div>
 
-              <div className="project-content">
-                <div className="project-header">
-                  <h3 className="project-title">{project.title}</h3>
-                  <span className="project-date">{project.date}</span>
-                </div>
-
-                <p className="project-description">{project.description}</p>
-
-                <div className="project-tech">
-                  {project.tech.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              <div className="repo-date gh-text-muted">
+                Updated {project.date}
               </div>
             </motion.div>
           ))}

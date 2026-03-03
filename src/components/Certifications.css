@@ -1,3 +1,18 @@
+.certifications {
+  padding: 60px 0;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.certification-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
 .certifications-timeline {
   max-width: 900px;
   margin: 0 auto;

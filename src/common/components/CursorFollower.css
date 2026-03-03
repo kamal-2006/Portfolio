@@ -1,0 +1,163 @@
+/* Circular Cursor Container */
+.custom-cursor-circle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10001;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(102, 126, 234, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  box-shadow: 
+    0 0 20px rgba(102, 126, 234, 0.2),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-cursor-circle.scrolling {
+  box-shadow: 
+    0 0 30px rgba(102, 126, 234, 0.4),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  border-color: rgba(102, 126, 234, 0.6);
+}
+
+[data-theme="dark"] .custom-cursor-circle {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 
+    0 0 25px rgba(102, 126, 234, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .custom-cursor-circle.scrolling {
+  box-shadow: 
+    0 0 35px rgba(102, 126, 234, 0.5),
+    inset 0 0 15px rgba(255, 255, 255, 0.25);
+  border-color: rgba(102, 126, 234, 0.7);
+}
+
+/* Rocket Icon Inside Circle */
+.custom-cursor-rocket {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 4px rgba(102, 126, 234, 0.3));
+  will-change: transform;
+}
+
+[data-theme="dark"] .custom-cursor-rocket {
+  filter: drop-shadow(0 0 6px rgba(102, 126, 234, 0.5));
+}
+
+/* Hover Glow Effect */
+.custom-cursor-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+  filter: blur(8px);
+  will-change: transform;
+}
+
+[data-theme="dark"] .custom-cursor-glow {
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.5) 0%, transparent 70%);
+}
+
+/* Trail Effect */
+.cursor-trail-point {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  will-change: transform, opacity;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
+}
+
+[data-theme="dark"] .cursor-trail-point {
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+}
+
+/* Click Particles */
+.click-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10002;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+  will-change: transform, opacity;
+}
+
+/* Floating Hearts */
+.cursor-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10002;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.3));
+  user-select: none;
+}
+
+[data-theme="dark"] .cursor-heart {
+  filter: drop-shadow(0 2px 6px rgba(255, 105, 180, 0.5));
+}
+
+/* Hide default cursor */
+body,
+a,
+button,
+input,
+textarea,
+select,
+.btn,
+.nav-item,
+.gh-card,
+[role="button"] {
+  cursor: none !important;
+}
+
+/* Disable custom cursor on mobile and touch devices */
+@media (max-width: 768px) {
+  .custom-cursor-circle,
+  .custom-cursor-rocket,
+  .custom-cursor-glow,
+  .cursor-trail-point,
+  .click-particle,
+  .cursor-heart {
+    display: none;
+  }
+
+  body,
+  body * {
+    cursor: auto !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .custom-cursor-circle,
+  .custom-cursor-rocket,
+  .custom-cursor-glow,
+  .cursor-trail-point,
+  .click-particle,
+  .cursor-heart {
+    display: none;
+  }
+
+  body,
+  body * {
+    cursor: auto !important;
+  }
+}

@@ -1,44 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCode, FaTrophy, FaUsers, FaLaptopCode } from 'react-icons/fa';
-import { SiLeetcode, SiHackerrank } from 'react-icons/si';
+import { FaCode, FaTrophy, FaUsers } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 import './Experience.css';
 
 const Experience = () => {
   const activities = [
     {
       icon: <FaCode />,
-      title: 'Coding Practice',
-      description: 'Solved 100+ problems on LeetCode and HackerRank',
-      stats: '100+ Problems',
+      title: 'LeetCode Problem Solving',
+      description: 'Solved 300+ problems on LeetCode covering Data Structures and Algorithms',
+      stats: '300+ Problems',
       color: '#ffa116'
     },
     {
       icon: <FaUsers />,
       title: 'NSS Volunteer',
-      description: 'Active volunteer contributing to social welfare activities',
+      description: 'Active NSS volunteer with participation in community service programs',
       stats: 'Active Member',
       color: '#667eea'
     },
     {
       icon: <FaTrophy />,
-      title: 'Coding Contests',
-      description: 'Regular participation in competitive programming contests',
+      title: 'Coding Contests & Events',
+      description: 'Regular participant in coding contests and technical events',
       stats: 'Regular Participant',
       color: '#f5576c'
-    },
-    {
-      icon: <FaLaptopCode />,
-      title: 'Technical Workshops',
-      description: 'Engaged in various technical workshops and hackathons',
-      stats: 'Active Learner',
-      color: '#4facfe'
     }
   ];
 
   const platforms = [
-    { name: 'LeetCode', icon: <SiLeetcode />, link: 'https://leetcode.com/kamaleshk23' },
-    { name: 'HackerRank', icon: <SiHackerrank />, link: 'https://hackerrank.com/kamaleshk23' }
+    { name: 'LeetCode', icon: <SiLeetcode />, link: 'https://leetcode.com/u/w4Cceb/' }
   ];
 
   const fadeInUp = {
@@ -51,7 +43,7 @@ const Experience = () => {
   };
 
   return (
-    <section className="experience section" id="experience">
+    <section className="experience section" id="activities">
       <div className="container">
         <motion.h2 
           className="section-title"
@@ -60,7 +52,7 @@ const Experience = () => {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          Experience & Activities
+          Achievements & Activities
         </motion.h2>
 
         <div className="activities-grid">

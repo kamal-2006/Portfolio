@@ -1,4 +1,19 @@
 .experience {
+  padding: 60px 0;
+}
+
+.experience-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experience-item {
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.experience {
   background: transparent;
 }
 

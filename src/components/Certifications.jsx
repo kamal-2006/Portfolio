@@ -6,8 +6,17 @@ import './Certifications.css';
 const Certifications = () => {
   const certifications = [
     {
+      title: 'Programming in Java',
+      issuer: 'NPTEL',
+      duration: '12 Weeks',
+      score: '99% (Top 1%)',
+      date: '2024',
+      icon: <FaCertificate />
+    },
+    {
       title: 'The Joy of Computing Using Python',
-      issuer: 'NPTEL (IIT Ropar)',
+      issuer: 'NPTEL',
+      duration: '12 Weeks',
       score: '78%',
       date: '2024',
       icon: <FaCertificate />
@@ -52,31 +61,16 @@ const Certifications = () => {
               </div>
               <div className="cert-content">
                 <h3 className="cert-title">{cert.title}</h3>
-                <p className="cert-issuer">{cert.issuer}</p>
+                <p className="cert-issuer">{cert.issuer} · {cert.duration}</p>
                 <div className="cert-footer">
                   <span className="cert-score">
-                    <FaTrophy /> Score: {cert.score}
+                    <FaTrophy /> {cert.score}
                   </span>
                   <span className="cert-date">{cert.date}</span>
                 </div>
               </div>
             </motion.div>
           ))}
-
-          <motion.div
-            className="cert-placeholder glass"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="placeholder-content">
-              <FaCertificate className="placeholder-icon" />
-              <h4>More Certifications Coming Soon!</h4>
-              <p>Currently pursuing advanced courses in Full Stack Development, Cloud Computing, and more...</p>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

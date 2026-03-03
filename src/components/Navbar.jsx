@@ -1,35 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { FaSun, FaMoon, FaBars, FaTimes, FaBolt } from 'react-icons/fa';
+import { HiMoon, HiSun } from 'react-icons/hi';
+import { useTheme } from '../common/hooks/ThemeContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isToggling, setIsToggling] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
+      
+      // Active section detection
+      const sections = ['hero', 'skills', 'projects', 'activities', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleThemeToggle = () => {
-    setIsToggling(true);
-    toggleTheme();
-    setTimeout(() => setIsToggling(false), 600);
-  };
-
   const navItems = [
     { name: 'Home', to: 'hero' },
-    { name: 'About', to: 'about' },
     { name: 'Skills', to: 'skills' },
     { name: 'Projects', to: 'projects' },
-    { name: 'Services', to: 'services' },
+    { name: 'Activities', to: 'activities' },
     { name: 'Contact', to: 'contact' }
   ];
 
@@ -45,69 +55,47 @@ const Navbar = () => {
         behavior: 'smooth'
       });
     }
-    setMenuOpen(false);
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <div className="navbar-content">
-          <div className="logo">
-            <span className="logo-text">Kamalesh<span className="gradient-text">.K</span></span>
+    <nav className={`gh-navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="gh-container">
+        <div className="navbar-inner">
+          <div className="navbar-brand">
+            <span className="brand-letter">K</span>
+            <span className="brand-text">
+              amalesh<span className="brand-dot">.</span><span className="brand-accent">K</span>
+            </span>
           </div>
 
-          <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
+          <div className="navbar-menu">
             {navItems.map((item, index) => (
-              <a
+              <button
                 key={index}
-                href={`#${item.to}`}
-                className="nav-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.to);
-                }}
+                className={`nav-item ${activeSection === item.to ? 'active' : ''}`}
+                onClick={() => scrollToSection(item.to)}
               >
                 {item.name}
-              </a>
+              </button>
             ))}
           </div>
 
           <div className="navbar-actions">
+            {/* Modern Theme Toggle */}
             <button 
-              className={`theme-toggle-creative ${theme} ${isToggling ? 'toggling' : ''}`}
-              onClick={handleThemeToggle}
-              aria-label="Toggle theme"
+              className="theme-toggle-btn"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
-              <div className="toggle-icon-wrapper">
-                {theme === 'light' ? (
-                  <FaSun className="theme-icon sun" />
-                ) : (
-                  <FaMoon className="theme-icon moon" />
-                )}
+              <div className="theme-toggle-track">
+                <div className={`theme-toggle-thumb ${theme}`}>
+                  {theme === 'dark' ? (
+                    <HiMoon className="theme-icon moon" />
+                  ) : (
+                    <HiSun className="theme-icon sun" />
+                  )}
+                </div>
               </div>
-              
-              {/* Energy Burst Effect */}
-              {isToggling && (
-                <>
-                  <div className="burst-ring ring-1"></div>
-                  <div className="burst-ring ring-2"></div>
-                  <div className="burst-ring ring-3"></div>
-                  <FaBolt className="lightning-bolt bolt-1" />
-                  <FaBolt className="lightning-bolt bolt-2" />
-                  <FaBolt className="lightning-bolt bolt-3" />
-                  <FaBolt className="lightning-bolt bolt-4" />
-                </>
-              )}
-              
-              {/* Glow Pulse */}
-              <div className="glow-pulse"></div>
-            </button>
-            
-            <button 
-              className="mobile-menu-toggle" 
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
         </div>

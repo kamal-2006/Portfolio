@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaPython, 
-  FaJava, FaGitAlt, FaGithub, FaDatabase 
+  FaJava, FaGithub, FaDatabase, FaNetworkWired 
 } from 'react-icons/fa';
 import { 
-  SiMongodb, SiExpress, SiCplusplus, 
+  SiMongodb, SiExpress, SiCplusplus, SiPostman 
 } from 'react-icons/si';
 import './Skills.css';
 
@@ -13,103 +13,98 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
+      icon: '👨‍💻',
       skills: [
-        { name: 'C', level: 85, icon: <SiCplusplus /> },
-        { name: 'C++', level: 85, icon: <SiCplusplus /> },
-        { name: 'Java', level: 80, icon: <FaJava /> },
-        { name: 'Python', level: 82, icon: <FaPython /> },
-        { name: 'JavaScript', level: 88, icon: <FaJs /> }
+        { name: 'C', icon: <SiCplusplus />, color: '#A8B9CC' },
+        { name: 'Java', icon: <FaJava />, color: '#007396' },
+        { name: 'Python', icon: <FaPython />, color: '#3776AB' },
+        { name: 'JavaScript', icon: <FaJs />, color: '#F7DF1E' }
       ]
     },
     {
       title: 'Frontend Development',
+      icon: '🎨',
       skills: [
-        { name: 'HTML5', level: 95, icon: <FaHtml5 /> },
-        { name: 'CSS3', level: 90, icon: <FaCss3Alt /> },
-        { name: 'React', level: 90, icon: <FaReact /> }
+        { name: 'HTML5', icon: <FaHtml5 />, color: '#E34F26' },
+        { name: 'CSS3', icon: <FaCss3Alt />, color: '#1572B6' },
+        { name: 'React', icon: <FaReact />, color: '#61DAFB' }
       ]
     },
     {
       title: 'Backend Development',
+      icon: '⚙️',
       skills: [
-        { name: 'Node.js', level: 85, icon: <FaNodeJs /> },
-        { name: 'Express', level: 83, icon: <SiExpress /> }
+        { name: 'Node.js', icon: <FaNodeJs />, color: '#339933' },
+        { name: 'Express', icon: <SiExpress />, color: '#000000' }
       ]
     },
     {
       title: 'Database & Tools',
+      icon: '🛠️',
       skills: [
-        { name: 'MongoDB', level: 80, icon: <SiMongodb /> },
-        { name: 'Git', level: 87, icon: <FaGitAlt /> },
-        { name: 'GitHub', level: 88, icon: <FaGithub /> },
-        { name: 'VS Code', level: 92, icon: <FaGithub /> }
+        { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
+        { name: 'GitHub', icon: <FaGithub />, color: '#181717' },
+        { name: 'VS Code', icon: <FaGithub />, color: '#007ACC' },
+        { name: 'Postman', icon: <SiPostman />, color: '#FF6C37' }
       ]
     },
     {
       title: 'Core Concepts',
+      icon: '📚',
       skills: [
-        { name: 'OOP', level: 85, icon: <FaDatabase /> },
-        { name: 'DSA', level: 83, icon: <FaDatabase /> },
-        { name: 'DBMS', level: 82, icon: <FaDatabase /> },
-        { name: 'Operating Systems', level: 78, icon: <FaDatabase /> }
+        { name: 'OOP', icon: <FaDatabase />, color: '#0078D4' },
+        { name: 'DSA', icon: <FaDatabase />, color: '#FF6B6B' },
+        { name: 'DBMS', icon: <FaDatabase />, color: '#4ECDC4' },
+        { name: 'Operating Systems', icon: <FaDatabase />, color: '#95E1D3' },
+        { name: 'Computer Networks', icon: <FaNetworkWired />, color: '#FF9800' }
       ]
     }
   ];
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
-    }
-  };
-
   return (
-    <section className="skills section" id="skills">
-      <div className="container">
-        <motion.h2 
-          className="section-title"
-          initial="hidden"
-          whileInView="visible"
+    <section className="skills gh-section" id="skills">
+      <div className="gh-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={fadeInUp}
+          transition={{ duration: 0.5 }}
         >
-          Skills & Expertise
-        </motion.h2>
+          <h2 className="gh-heading" style={{ fontSize: '24px', marginBottom: '16px' }}>
+            Skills & Technologies
+          </h2>
+          <p className="gh-text-muted" style={{ marginBottom: '24px', fontSize: '14px' }}>
+            Technologies and tools I work with
+          </p>
+        </motion.div>
 
-        <div className="skills-grid">
+        <div className="skills-categories">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={catIndex}
-              className="skill-category glass"
-              initial="hidden"
-              whileInView="visible"
+              className="skill-category-card gh-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              variants={fadeInUp}
               transition={{ delay: catIndex * 0.1 }}
             >
-              <h3 className="category-title">{category.title}</h3>
-              <div className="skills-list">
+              <div className="category-header">
+                <span className="category-icon">{category.icon}</span>
+                <h3 className="category-name">{category.title}</h3>
+              </div>
+              <div className="skills-badges">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    <div className="skill-header">
-                      <div className="skill-info">
-                        <span className="skill-icon">{skill.icon}</span>
-                        <span className="skill-name">{skill.name}</span>
-                      </div>
-                      <span className="skill-percentage">{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar">
-                      <motion.div 
-                        className="skill-progress"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 + skillIndex * 0.1 }}
-                      />
-                    </div>
-                  </div>
+                  <motion.div
+                    key={skillIndex}
+                    className="skill-badge"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="skill-badge-icon" style={{ color: skill.color }}>
+                      {skill.icon}
+                    </span>
+                    <span className="skill-badge-name">{skill.name}</span>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
