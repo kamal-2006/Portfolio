@@ -1,5 +1,5 @@
 .gh-footer {
-  background-color: var(--gh-canvas-subtle);
+  background-color: var(--bg-secondary);
   border-top: 1px solid var(--gh-border-default);
   padding: 48px 0 24px;
   margin-top: 64px;

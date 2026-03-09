@@ -5,6 +5,7 @@
   --gh-canvas-default: #ffffff;
   --gh-canvas-subtle: #f6f8fa;
   --gh-canvas-inset: #f6f8fa;
+  --gh-canvas-rgb: 255, 255, 255;
   
   --gh-bg-default: #ffffff;
   --gh-bg-subtle: #f6f8fa;
@@ -29,6 +30,7 @@
   --gh-success-emphasis: #1f883d;
   --gh-success-muted: rgba(74, 194, 107, 0.4);
   --gh-success-subtle: #dafbe1;
+  --gh-success-fg-rgb: 26, 127, 55;
   
   --gh-attention-fg: #9a6700;
   --gh-attention-emphasis: #bf8700;
@@ -47,6 +49,56 @@
   
   --gh-overlay-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
   --gh-overlay-backdrop: rgba(31, 35, 40, 0.5);
+
+  /* === Semantic Portfolio Tokens (Light) === */
+  --text-primary: var(--gh-fg-default);
+  --text-secondary: var(--gh-fg-muted);
+  --bg-primary: #eef4fb;
+  --bg-secondary: rgba(255, 255, 255, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(31, 35, 40, 0.14);
+  --shadow: rgba(15, 23, 42, 0.12);
+  --accent-primary: #1e6fdd;
+  --accent-secondary: #0ea5a4;
+  --gradient-1: linear-gradient(135deg, #1e6fdd 0%, #0ea5a4 100%);
+
+  /* === Page Background Tokens (Light) === */
+  --page-bg-base: #edf3fb;
+  --page-bg-secondary: #f8fbff;
+  --page-bg-accent-1: rgba(30, 111, 221, 0.2);
+  --page-bg-accent-2: rgba(14, 165, 164, 0.16);
+  --page-bg-accent-3: rgba(244, 159, 10, 0.1);
+  --surface-section: rgba(255, 255, 255, 0.62);
+  --bg-overlay-color: #f3f7fd;
+  --bg-overlay-opacity: 0.5;
+
+  /* === Decorative Background Tokens (Light) === */
+  --bg-mesh-opacity: 0.4;
+  --bg-shape-opacity: 0.05;
+  --bg-orb-opacity: 0.3;
+  --bg-grid-major: rgba(33, 71, 125, 0.11);
+  --bg-grid-minor: rgba(33, 71, 125, 0.05);
+  --bg-grid-opacity: 0.2;
+  --bg-blob-1: rgba(30, 111, 221, 0.24);
+  --bg-blob-2: rgba(14, 165, 164, 0.2);
+  --bg-blob-3: rgba(12, 146, 198, 0.18);
+  --bg-blob-4: rgba(244, 159, 10, 0.14);
+
+  /* Compatibility tokens for existing advanced variants */
+  --grid-major-line: var(--bg-grid-major);
+  --grid-color-primary: var(--bg-grid-major);
+  --grid-color-secondary: var(--bg-grid-minor);
+  --grid-line-thickness-main: 1px;
+  --grid-line-thickness-minor: 1px;
+  --grid-glow-intensity: 0.12;
+
+  --aurora-bg: radial-gradient(circle at 15% 20%, rgba(30, 111, 221, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(14, 165, 164, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #eef4fb 0%, #f8fbff 100%);
+  --aurora-opacity: 0.28;
+  --aurora-color-1: rgba(30, 111, 221, 0.24);
+  --aurora-color-2: rgba(14, 165, 164, 0.22);
+  --aurora-color-3: rgba(244, 159, 10, 0.16);
 }
 
 [data-theme="dark"] {
@@ -54,6 +106,7 @@
   --gh-canvas-default: #0d1117;
   --gh-canvas-subtle: #161b22;
   --gh-canvas-inset: #010409;
+  --gh-canvas-rgb: 13, 17, 23;
   
   --gh-bg-default: #0d1117;
   --gh-bg-subtle: #161b22;
@@ -78,6 +131,7 @@
   --gh-success-emphasis: #238636;
   --gh-success-muted: rgba(46, 160, 67, 0.4);
   --gh-success-subtle: rgba(46, 160, 67, 0.15);
+  --gh-success-fg-rgb: 63, 185, 80;
   
   --gh-attention-fg: #d29922;
   --gh-attention-emphasis: #9e6a03;
@@ -96,6 +150,56 @@
   
   --gh-overlay-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   --gh-overlay-backdrop: rgba(1, 4, 9, 0.8);
+
+  /* === Semantic Portfolio Tokens (Dark) === */
+  --text-primary: var(--gh-fg-default);
+  --text-secondary: var(--gh-fg-muted);
+  --bg-primary: #070d16;
+  --bg-secondary: rgba(16, 24, 38, 0.82);
+  --card-bg: rgba(18, 28, 44, 0.68);
+  --card-border: rgba(120, 141, 168, 0.3);
+  --shadow: rgba(0, 0, 0, 0.5);
+  --accent-primary: #63a3ff;
+  --accent-secondary: #2bc4b5;
+  --gradient-1: linear-gradient(135deg, #4f8ff0 0%, #2bc4b5 100%);
+
+  /* === Page Background Tokens (Dark) === */
+  --page-bg-base: #070d16;
+  --page-bg-secondary: #0e1725;
+  --page-bg-accent-1: rgba(79, 143, 240, 0.3);
+  --page-bg-accent-2: rgba(43, 196, 181, 0.2);
+  --page-bg-accent-3: rgba(240, 172, 74, 0.12);
+  --surface-section: rgba(9, 16, 28, 0.72);
+  --bg-overlay-color: #070d16;
+  --bg-overlay-opacity: 0.58;
+
+  /* === Decorative Background Tokens (Dark) === */
+  --bg-mesh-opacity: 0.56;
+  --bg-shape-opacity: 0.12;
+  --bg-orb-opacity: 0.5;
+  --bg-grid-major: rgba(133, 178, 232, 0.2);
+  --bg-grid-minor: rgba(133, 178, 232, 0.09);
+  --bg-grid-opacity: 0.38;
+  --bg-blob-1: rgba(95, 163, 255, 0.38);
+  --bg-blob-2: rgba(43, 196, 181, 0.3);
+  --bg-blob-3: rgba(67, 170, 240, 0.28);
+  --bg-blob-4: rgba(240, 172, 74, 0.2);
+
+  /* Compatibility tokens for existing advanced variants */
+  --grid-major-line: var(--bg-grid-major);
+  --grid-color-primary: var(--bg-grid-major);
+  --grid-color-secondary: var(--bg-grid-minor);
+  --grid-line-thickness-main: 1px;
+  --grid-line-thickness-minor: 1px;
+  --grid-glow-intensity: 0.18;
+
+  --aurora-bg: radial-gradient(circle at 20% 20%, rgba(95, 163, 255, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(43, 196, 181, 0.14) 0%, transparent 50%),
+    linear-gradient(180deg, #070d16 0%, #0e1725 100%);
+  --aurora-opacity: 0.38;
+  --aurora-color-1: rgba(95, 163, 255, 0.35);
+  --aurora-color-2: rgba(43, 196, 181, 0.3);
+  --aurora-color-3: rgba(240, 172, 74, 0.24);
 }
 
 /* === GitHub Component Styles === */

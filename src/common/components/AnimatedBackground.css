@@ -874,3 +874,115 @@
     opacity: 0.04 !important;
   }
 }
+
+/* Theme-polished overrides for the active geometric variant */
+.floating-geometric-bg {
+  background:
+    radial-gradient(circle at 12% 15%, var(--page-bg-accent-1) 0%, transparent 46%),
+    radial-gradient(circle at 82% 74%, var(--page-bg-accent-2) 0%, transparent 48%),
+    linear-gradient(160deg, var(--page-bg-base) 0%, var(--page-bg-secondary) 100%);
+}
+
+.mesh-gradient-layer {
+  opacity: var(--bg-mesh-opacity);
+}
+
+.mesh-blob {
+  filter: blur(110px);
+}
+
+.mesh-blob-1 {
+  background: radial-gradient(circle, var(--bg-blob-1) 0%, transparent 70%);
+}
+
+.mesh-blob-2 {
+  background: radial-gradient(circle, var(--bg-blob-2) 0%, transparent 70%);
+}
+
+.mesh-blob-3 {
+  background: radial-gradient(circle, var(--bg-blob-3) 0%, transparent 70%);
+}
+
+.mesh-blob-4 {
+  background: radial-gradient(circle, var(--bg-blob-4) 0%, transparent 70%);
+}
+
+.geometric-shape {
+  opacity: var(--bg-shape-opacity);
+}
+
+.shape-circle,
+.shape-square,
+.shape-hexagon {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.shape-circle {
+  box-shadow: 0 0 55px var(--bg-blob-1);
+}
+
+.shape-square {
+  box-shadow: 0 0 45px var(--bg-blob-2);
+}
+
+.shape-triangle {
+  border-bottom-color: var(--bg-blob-3);
+  box-shadow: 0 0 50px var(--bg-blob-3);
+}
+
+.shape-hexagon {
+  box-shadow: 0 0 45px var(--bg-blob-4);
+}
+
+[data-theme="dark"] .shape-circle,
+[data-theme="dark"] .shape-square,
+[data-theme="dark"] .shape-triangle,
+[data-theme="dark"] .shape-hexagon {
+  opacity: 0.95;
+}
+
+.gradient-orb {
+  opacity: var(--bg-orb-opacity);
+}
+
+.orb-1 {
+  background: radial-gradient(circle, var(--bg-blob-1) 0%, transparent 72%);
+}
+
+.orb-2 {
+  background: radial-gradient(circle, var(--bg-blob-2) 0%, transparent 72%);
+}
+
+.orb-3 {
+  background: radial-gradient(circle, var(--bg-blob-3) 0%, transparent 72%);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(var(--bg-grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-major) 1px, transparent 1px);
+  opacity: var(--bg-grid-opacity);
+}
+
+.pattern-layer {
+  opacity: 0.08;
+}
+
+[data-theme="dark"] .pattern-layer {
+  opacity: 0.14;
+}
+
+.animated-bg::after {
+  background: var(--bg-overlay-color);
+  opacity: var(--bg-overlay-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh-blob,
+  .geometric-shape,
+  .gradient-orb,
+  .pattern-layer,
+  .wave-parallax use {
+    animation: none !important;
+  }
+}

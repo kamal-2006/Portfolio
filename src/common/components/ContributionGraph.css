@@ -1,5 +1,5 @@
 .contribution-graph-section {
-  background-color: var(--gh-canvas-default);
+  background-color: var(--surface-section);
   border-top: 1px solid var(--gh-border-default);
 }
 

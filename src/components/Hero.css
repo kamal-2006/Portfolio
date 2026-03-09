@@ -1,6 +1,6 @@
 .hero {
   padding: 120px 0 80px;
-  background-color: var(--gh-canvas-default);
+  background-color: var(--surface-section);
   border-bottom: 1px solid var(--gh-border-default);
 }
 
