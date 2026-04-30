@@ -3,22 +3,48 @@
   border-top: 1px solid var(--gh-border-default);
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+.projects-carousel {
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  padding: 6px 4px 18px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gh-border-default) transparent;
+}
+
+.projects-carousel::-webkit-scrollbar {
+  height: 10px;
+}
+
+.projects-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projects-carousel::-webkit-scrollbar-thumb {
+  background: var(--gh-border-default);
+  border-radius: 999px;
+}
+
+.projects-carousel::-webkit-scrollbar-thumb:hover {
+  background: var(--gh-accent-fg);
 }
 
 /* GitHub Repo Card Style */
 .project-repo-card {
+  flex: 0 0 clamp(320px, 38vw, 420px);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: box-shadow 0.2s ease;
+  gap: 14px;
+  scroll-snap-align: start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .project-repo-card:hover {
-  box-shadow: var(--gh-shadow-medium);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--gh-shadow-large);
+  border-color: var(--gh-accent-fg);
 }
 
 .repo-header {
@@ -63,11 +89,12 @@
 }
 
 .repo-description {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--gh-fg-muted);
   line-height: 1.5;
   margin: 0;
   display: -webkit-box;
+  -webkit-line-clamp: 4;
 
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -76,12 +103,12 @@
 .repo-topics {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
 }
 
 .topic-tag {
   font-size: 12px;
-  padding: 4px 8px;
+  padding: 5px 10px;
   background-color: var(--gh-accent-subtle);
   color: var(--gh-accent-fg);
   border-radius: 12px;
@@ -135,11 +162,16 @@
 .repo-actions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .repo-actions .gh-btn {
   font-size: 12px;
   padding: 4px 12px;
+}
+
+.gh-btn-secondary {
+  background: var(--gh-bg-subtle);
 }
 
 .repo-date {
@@ -149,10 +181,25 @@
 }
 
 /* Responsive */
+@media (min-width: 769px) {
+  .projects-carousel {
+    padding-bottom: 22px;
+  }
+}
+
 @media (max-width: 768px) {
-  .projects-grid {
+  .projects-carousel {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
+    overflow: visible;
+    padding: 0;
+    scroll-snap-type: none;
+  }
+
+  .project-repo-card {
+    flex: none;
+    width: 100%;
   }
   
   .repo-footer {
@@ -166,6 +213,18 @@
   
   .repo-actions .gh-btn {
     flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-carousel {
+    scroll-behavior: auto;
+  }
+
+  .project-repo-card,
+  .project-repo-card:hover {
+    transition: none;
+    transform: none;
   }
 }
 

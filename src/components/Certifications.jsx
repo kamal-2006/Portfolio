@@ -10,7 +10,7 @@ const Certifications = () => {
       issuer: 'NPTEL',
       duration: '12 Weeks',
       score: '99% (Top 1%)',
-      date: '2024',
+      date: '2025',
       icon: <FaCertificate />
     },
     {
@@ -18,7 +18,7 @@ const Certifications = () => {
       issuer: 'NPTEL',
       duration: '12 Weeks',
       score: '78%',
-      date: '2024',
+      date: '2025',
       icon: <FaCertificate />
     }
   ];
