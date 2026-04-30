@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCode, FaTrophy, FaUsers } from 'react-icons/fa';
-import { SiLeetcode } from 'react-icons/si';
 import './Experience.css';
 
 const Experience = () => {
@@ -9,28 +8,24 @@ const Experience = () => {
     {
       icon: <FaCode />,
       title: 'LeetCode Problem Solving',
-      description: 'Solved 300+ problems on LeetCode covering Data Structures and Algorithms',
-      stats: '300+ Problems',
+      description: 'Solved 400+ problems on LeetCode focusing on algorithms and data structures',
+      stats: '400+ Problems',
       color: '#ffa116'
     },
     {
       icon: <FaUsers />,
       title: 'NSS Volunteer',
-      description: 'Active NSS volunteer with participation in community service programs',
-      stats: 'Active Member',
+      description: 'Participated in community outreach and service programs as an NSS volunteer',
+      stats: 'NSS Volunteer',
       color: '#667eea'
     },
     {
       icon: <FaTrophy />,
       title: 'Coding Contests & Events',
-      description: 'Regular participant in coding contests and technical events',
-      stats: 'Regular Participant',
+      description: 'Regular participant in coding contests, hackathons and technical events',
+      stats: 'Competitions',
       color: '#f5576c'
     }
-  ];
-
-  const platforms = [
-    { name: 'LeetCode', icon: <SiLeetcode />, link: 'https://leetcode.com/u/w4Cceb/' }
   ];
 
   const fadeInUp = {
@@ -57,51 +52,37 @@ const Experience = () => {
 
         <div className="activities-grid">
           {activities.map((activity, index) => (
-            <motion.div
+            <motion.article
               key={index}
-              className="activity-card glass"
+              className="activity-card"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08 }}
+              aria-labelledby={`activity-${index}-title`}
             >
-              <div 
-                className="activity-icon"
-                style={{ background: activity.color }}
-              >
-                {activity.icon}
+              <div className="activity-card-inner">
+                <div 
+                  className="activity-icon"
+                  style={{ background: activity.color }}
+                  aria-hidden="true"
+                >
+                  {activity.icon}
+                </div>
+
+                <div className="activity-body">
+                  <h3 id={`activity-${index}-title`} className="activity-title">{activity.title}</h3>
+                  <p className="activity-description">{activity.description}</p>
+                </div>
+
+                <div className="activity-meta">
+                  <span className="activity-badge">{activity.stats}</span>
+                </div>
               </div>
-              <h3 className="activity-title">{activity.title}</h3>
-              <p className="activity-description">{activity.description}</p>
-              <span className="activity-badge">{activity.stats}</span>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
-
-        <motion.div
-          className="coding-platforms"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h3 className="platforms-title">Find me on</h3>
-          <div className="platforms-list">
-            {platforms.map((platform, index) => (
-              <a
-                key={index}
-                href={platform.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="platform-link glass"
-              >
-                <span className="platform-icon">{platform.icon}</span>
-                <span className="platform-name">{platform.name}</span>
-              </a>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

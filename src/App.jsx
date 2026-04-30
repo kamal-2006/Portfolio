@@ -20,6 +20,21 @@ function App() {
     setIsLoading(false);
   };
 
+  const handleViewResume = () => {
+    const resumeUrl = '/resume.pdf';
+    const resumeWindow = window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+
+    if (!resumeWindow) {
+      const link = document.createElement('a');
+      link.href = resumeUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     <div className="App">
       {isLoading && <LoadingScreen onLoadComplete={handleLoadComplete} />}
@@ -27,7 +42,7 @@ function App() {
       <AnimatedBackground variant="geometric" />
       <ScrollProgress />
       <Navbar />
-      <Hero />
+      <Hero onViewResume={handleViewResume} />
       <Skills />
       <Projects />
       <Experience />

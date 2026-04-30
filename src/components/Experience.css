@@ -1,37 +1,38 @@
-.experience {
-  padding: 60px 0;
+/* Activities / Experience - Modern Card Timeline */
+.experience { 
+  padding: 80px 0;
+  position: relative;
 }
 
-.experience-list {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.experience-item {
-  padding: 20px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-}
-
-.experience {
-  background: transparent;
+.experience .section-title {
+  margin-bottom: 50px;
 }
 
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Activity Card - Modern Design */
 .activity-card {
-  padding: 35px 25px;
-  text-align: center;
-  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
+/* Decorative gradient overlay on hover */
 .activity-card::before {
   content: '';
   position: absolute;
@@ -39,8 +40,9 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 
 .activity-card:hover::before {
@@ -48,122 +50,196 @@
 }
 
 .activity-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px var(--shadow);
+  transform: translateY(-8px);
+  border-color: var(--accent-primary);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.06),
+    0 0 1px var(--accent-primary);
 }
 
+.activity-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Icon Container */
 .activity-icon {
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  color: white;
-  margin: 0 auto 20px;
+  font-size: 1.8rem;
+  color: #ffffff;
+  flex-shrink: 0;
+  background: var(--gradient-1);
   position: relative;
-  z-index: 1;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover .activity-icon {
+  transform: scale(1.1) rotateZ(-5deg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Body Content */
+.activity-body { 
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .activity-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin: 0;
   color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.3px;
 }
 
 .activity-description {
-  font-size: 1rem;
+  margin: 0;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  font-weight: 500;
 }
 
-.activity-badge {
-  display: inline-block;
-  padding: 8px 20px;
-  background: var(--gradient-1);
-  color: white;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.coding-platforms {
-  text-align: center;
-  padding: 40px;
-  background: var(--card-bg);
-  border-radius: 20px;
-  border: 1px solid var(--card-border);
-}
-
-.platforms-title {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-  color: var(--text-primary);
-}
-
-.platforms-list {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.platform-link {
+/* Meta / Badge */
+.activity-meta { 
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 15px 30px;
-  transition: all 0.3s ease;
-  text-decoration: none;
 }
 
-.platform-link:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px var(--shadow);
-}
-
-.platform-icon {
-  font-size: 2rem;
+.activity-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, rgba(30, 111, 221, 0.15), rgba(14, 165, 164, 0.1));
   color: var(--accent-primary);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(30, 111, 221, 0.25);
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.platform-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.activity-card:hover .activity-badge {
+  background: linear-gradient(135deg, rgba(30, 111, 221, 0.25), rgba(14, 165, 164, 0.15));
+  border-color: var(--accent-primary);
+  transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .activities-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+  .experience { 
+    padding: 60px 0;
   }
 
-  .activity-card {
-    padding: 25px 20px;
+  .activities-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 24px;
   }
 
-  .activity-icon {
+  .activity-card { 
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .activity-icon { 
     width: 60px;
     height: 60px;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
+    border-radius: 12px;
   }
 
-  .activity-title {
+  .activity-title { 
     font-size: 1.1rem;
   }
 
-  .platforms-list {
-    flex-direction: column;
-    align-items: center;
+  .activity-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience { 
+    padding: 48px 0;
   }
 
-  .platform-link {
-    width: 100%;
-    max-width: 300px;
+  .activities-grid { 
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .activity-card { 
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .activity-icon { 
+    width: 54px;
+    height: 54px;
+    font-size: 1.2rem;
+  }
+
+  .activity-title { 
+    font-size: 1rem;
+  }
+
+  .activity-badge {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Dark mode enhancements */
+[data-theme="dark"] .activity-card::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+}
+
+[data-theme="dark"] .activity-card:hover {
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.4),
+    0 0 1px var(--accent-primary);
+}
+
+[data-theme="dark"] .activity-icon {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .activity-card:hover .activity-icon {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .activity-badge {
+  background: linear-gradient(135deg, rgba(99, 163, 255, 0.15), rgba(43, 196, 181, 0.1));
+  border-color: rgba(99, 163, 255, 0.3);
+}
+
+[data-theme="dark"] .activity-card:hover .activity-badge {
+  background: linear-gradient(135deg, rgba(99, 163, 255, 0.25), rgba(43, 196, 181, 0.15));
+  border-color: var(--accent-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activity-card,
+  .activity-icon,
+  .activity-badge {
+    transition: none;
+  }
+
+  .activity-card::before {
+    display: none;
   }
 }

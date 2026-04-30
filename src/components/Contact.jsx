@@ -1,48 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaUser, FaPen } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitStatus('success');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      
-      setTimeout(() => {
-        setSubmitStatus('');
-      }, 3000);
-    }, 1500);
-  };
 
   const contactInfo = [
-    {
-      icon: <FaEnvelope />,
-      title: 'Email',
-      value: 'kamaleshkamales006@gmail.com',
-      link: 'mailto:kamaleshkamales006@gmail.com'
-    },
     {
       icon: <FaPhone />,
       title: 'Phone',
@@ -50,10 +13,22 @@ const Contact = () => {
       link: 'tel:+916369026251'
     },
     {
-      icon: <FaMapMarkerAlt />,
-      title: 'Location',
-      value: 'Tiruppur, Tamil Nadu, India',
-      link: null
+      icon: <FaEnvelope />,
+      title: 'Email',
+      value: 'kamaleshkamales006@gmail.com',
+      link: 'mailto:kamaleshkamales006@gmail.com'
+    },
+    {
+      icon: <FaGithub />,
+      title: 'GitHub',
+      value: 'github.com/kamal-2006',
+      link: 'https://github.com/kamal-2006'
+    },
+    {
+      icon: <FaLinkedin />,
+      title: 'LinkedIn',
+      value: 'linkedin.com/in/kamalesh-k-ab11572b2',
+      link: 'https://www.linkedin.com/in/kamalesh-k-ab11572b2'
     }
   ];
 
@@ -74,16 +49,18 @@ const Contact = () => {
   return (
     <section className="contact section" id="contact">
       <div className="container">
-        <motion.div 
-          className="section-header"
+        <motion.div
+          className="contact-header"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            Let's work together to bring your ideas to life. I'm available for freelance projects and collaborations.
+          <p className="contact-eyebrow">Contact</p>
+          <h2 className="contact-title">Let’s connect</h2>
+          <p className="contact-subtitle">
+            Reach out directly through any of the channels below. I keep this section simple,
+            accessible, and easy to scan.
           </p>
         </motion.div>
 
@@ -95,101 +72,27 @@ const Contact = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h3 className="contact-subtitle">Let's Connect</h3>
-            <p className="contact-text">
-              Have a project in mind or just want to say hi? My inbox is always open. 
-              Whether you have a question or just want to chat, I'll try my best to get back to you!
-            </p>
-
-            <div className="contact-info-list">
+            <div className="contact-grid">
               {contactInfo.map((info, index) => (
-                <motion.div key={index} className="contact-info-item" variants={itemFadeInUp}>
-                  <div className="info-icon">{info.icon}</div>
-                  <div className="info-content">
-                    <h4>{info.title}</h4>
-                    {info.link ? (
-                      <a href={info.link}>{info.value}</a>
-                    ) : (
-                      <p>{info.value}</p>
-                    )}
+                <motion.a
+                  key={index}
+                  className="contact-card"
+                  href={info.link || '#'}
+                  target={info.link ? '_blank' : undefined}
+                  rel={info.link ? 'noopener noreferrer' : undefined}
+                  variants={itemFadeInUp}
+                  onClick={(e) => { if (!info.link) e.preventDefault(); }}
+                >
+                  <div className="contact-card-icon">
+                    {info.icon}
                   </div>
-                </motion.div>
+                  <div className="contact-card-body">
+                    <div className="contact-card-title">{info.title}</div>
+                    <div className="contact-card-value">{info.value}</div>
+                  </div>
+                </motion.a>
               ))}
             </div>
-          </motion.div>
-
-          <motion.div 
-            className="contact-form-section"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <h3 className="form-title">Send me a message</h3>
-              <div className="form-group">
-                <FaUser className="input-icon" />
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Name"
-                />
-              </div>
-
-              <div className="form-group">
-                <FaEnvelope className="input-icon" />
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Email"
-                />
-              </div>
-
-              <div className="form-group">
-                <FaPen className="input-icon textarea-icon" />
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="6"
-                  placeholder="Your Message"
-                ></textarea>
-              </div>
-
-              <motion.button 
-                type="submit" 
-                className="btn btn-primary submit-btn"
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {isSubmitting ? 'Sending...' : (
-                  <>
-                    Send Message <FaPaperPlane />
-                  </>
-                )}
-              </motion.button>
-
-              {submitStatus === 'success' && (
-                <motion.div 
-                  className="submit-success"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  ✓ Message sent successfully! I'll get back to you soon.
-                </motion.div>
-              )}
-            </form>
           </motion.div>
         </div>
       </div>
